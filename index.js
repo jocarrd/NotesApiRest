@@ -5,6 +5,6 @@ const app= http.createServer((request,response)=>{
     response.end('Hello World')
 })
 
-const PORT=3001
+const PORT=3002
 app.listen(PORT)
 console.log(`Server running on port ${PORT}`)
