@@ -11,9 +11,9 @@
   "author": "Jorge Carrera",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "2.0.15"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "4.17.1"
   }
 }
