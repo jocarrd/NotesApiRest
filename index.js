@@ -1,8 +1,11 @@
 const http= require('http')
 
+
+let json= [{"id" : 1, "content" : "esto es una prueba"}]
+
 const app= http.createServer((request,response)=>{
     response.writeHead(200,{'Content-Type': 'text/plain'})
-    response.end('Hello World')
+    response.end(JSON.stringify(json))
 })
 
 const PORT=3002
