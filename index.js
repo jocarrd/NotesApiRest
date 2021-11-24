@@ -18,6 +18,11 @@ app.get('/api/content',(request,response)=>{
     response.json(json)
 })
 
+app.get('/api/content/:id',(request,response)=>{
+    const id = Number( request.params.id)
+    const content = json.find(content => content.id === id )
+    response.send(content)
+})
+
 const PORT=3002
-app.listen(PORT)
-console.log(`Server running on port ${PORT}`)
+app.listen(PORT , ()=>{console.log(`Server running on port ${PORT}`)})
