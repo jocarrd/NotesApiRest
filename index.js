@@ -21,7 +21,20 @@ app.get('/api/content',(request,response)=>{
 app.get('/api/content/:id',(request,response)=>{
     const id = Number( request.params.id)
     const content = json.find(content => content.id === id )
-    response.send(content)
+    if(content){
+    response.json(content)
+    }else{
+        response.status(404).end()
+    }
+})
+
+app.delete('/api/content/:id',(request,response)=>{
+    const id = Number( request.params.id)
+    json = json.filter(note => note.id =! id)
+    response.status(204).end
+
+
+   
 })
 
 const PORT=3002
