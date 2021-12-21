@@ -3,6 +3,7 @@ const express= require('express')
 const app= express()
 
 let json= [{"id" : 1, "content" : "esto es una prueba"}]
+
 /*
 const app= http.createServer((request,response)=>{
     response.writeHead(200,{'Content-Type': 'aplication/json'})
@@ -14,6 +15,7 @@ app.get('/',(request,response)=>{
     response.send('<h1>Hello world</h1>')
 })
 
+// getAll
 app.get('/api/content',(request,response)=>{
     response.json(json)
 })
