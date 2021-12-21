@@ -1,6 +1,7 @@
 const { request, response } = require('express')
 const express= require('express')
 const app= express()
+app.use(express.json())
 
 let json= [{"id" : 1, "content" : "esto es una prueba"}]
 
@@ -15,11 +16,12 @@ app.get('/',(request,response)=>{
     response.send('<h1>Hello world</h1>')
 })
 
-// getAll
+// GET ALL
 app.get('/api/content',(request,response)=>{
     response.json(json)
 })
 
+//GET ONE
 app.get('/api/content/:id',(request,response)=>{
     const id = Number( request.params.id)
     const content = json.find(content => content.id === id )
@@ -30,13 +32,26 @@ app.get('/api/content/:id',(request,response)=>{
     }
 })
 
+//DELETE ONE
 app.delete('/api/content/:id',(request,response)=>{
     const id = Number( request.params.id)
     json = json.filter(note => note.id =! id)
-    response.status(204).end
+    response.status(204).end 
+})
 
-
-   
+//POST
+app.post('/api/content', (request,response)=>{
+    const note = request.body //Obtención de los parámetros de la petición
+    //Busqueda del max id y creación de un id
+    const ids= json.map(note=> note.id)
+    const   maxId= Math.max(...ids)    
+    const newNote={
+        id: maxId+1 ,
+        content: note.content
+    }
+    //Añade la nueva nota a las notas
+    json=[...json,newNote]
+    response.json(newNote)
 })
 
 const PORT=3002
