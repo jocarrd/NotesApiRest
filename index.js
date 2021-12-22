@@ -43,6 +43,14 @@ app.delete('/api/content/:id',(request,response)=>{
 app.post('/api/content', (request,response)=>{
     const note = request.body //Obtención de los parámetros de la petición
     //Busqueda del max id y creación de un id
+    if(!note || !note.content){
+
+        return response.status(400).json({
+            error: 'note content is missing'
+        })
+    }
+
+
     const ids= json.map(note=> note.id)
     const   maxId= Math.max(...ids)    
     const newNote={
