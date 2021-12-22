@@ -6,15 +6,17 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
+    "lint": "eslint .", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jorge Carrera",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "8.5.0",
     "nodemon": "2.0.15"
   },
   "dependencies": {
-    "body-parser": "^1.19.1",
+    "body-parser": "1.19.1",
     "express": "4.17.1"
   }
 }
