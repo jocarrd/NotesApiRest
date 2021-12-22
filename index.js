@@ -1,7 +1,14 @@
 const { request, response } = require("express");
 const express = require("express");
 const app = express();
+const logger=require("./logger-Middleware")
+
 app.use(express.json());
+app.use(logger)
+
+
+
+
 let json = [{ id: 1, content: "esto es una prueba" }];
 /*
 const app= http.createServer((request,response)=>{
@@ -56,6 +63,14 @@ app.post("/api/content", (request, response) => {
   json = [...json, newNote];
   response.json(newNote);
 });
+
+//Controlamos las direcciones no registradas en la api
+
+app.use((request,response,next)=>{
+    response.status(404).json({
+        error: "Not Found"
+    })
+})
 
 const PORT = 3002;
 app.listen(PORT, () => {
